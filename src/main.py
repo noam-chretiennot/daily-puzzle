@@ -1,8 +1,9 @@
 from discord import Intents
 from discord.ext import commands
-from Core import Core
 from dotenv import load_dotenv
 from os import getenv
+
+from dailyPuzzleUtils import Core
 
 #Bot permissions
 default_intents = Intents.default()
@@ -16,10 +17,11 @@ Daily_puzzle = Core(client)
 
 @client.event
 async def on_ready():
+    """Start sending messages"""
     print("Le bot est prêt")
     await client.loop.create_task(Daily_puzzle.sending_puzzle())
 
-    
+
 
 @client.command()
 async def ping(ctx):
