@@ -1,0 +1,18 @@
+{"from_channel" : 
+    {
+    "mats": 1082919364430405695, 
+    "fourchettes": 1082919942359367711, 
+    "7eme-rangees": 1082920196131536896, 
+    "enfilades": 1082920425006313484, 
+    "batteries": 1082920800040005742, 
+    "decouvertes": 1082921212910518413,
+    "doubles-attaques": 1082934538663120906, 
+    "sacrifices-de-deviation": 1082935547842023464,
+    "finales": 1082936927835131914, 
+    "enfermement": 1082944240738381865
+    },
+
+    "to_channel" : 1103991874726940712,
+        
+    "sending_time" : [9, 0]
+}
