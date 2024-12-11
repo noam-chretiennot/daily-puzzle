@@ -4,9 +4,7 @@ This module contains the functions to send the daily puzzle
 
 import random
 from datetime import datetime, timedelta
-import json
 import asyncio
-from os import getenv
 
 
 def time_to_wait(hour:int, minute:int) -> float:
@@ -22,18 +20,18 @@ def time_to_wait(hour:int, minute:int) -> float:
     return dt.total_seconds()
 
 
-def writingForDebug(time_stamp:datetime, debug_message:str) -> None:
+def log(time_stamp:datetime, debug_message:str) -> None:
     """ Writting in file what the bot does to debug easier"""
-    with open('log.txt', "w") as debug:
+    with open('log.txt', 'w', encoding='utf-8') as debug:
         debug.write("Puzzle envoye a : " + str(time_stamp))
         debug.write("   |   ")
         debug.write(debug_message)
 
 
-def checkIdAlreadySent(message) -> bool:
+def check_id_already_sent(message) -> bool:
     """check if puzzle has reaction "✅" """
     for reaction in message.reactions:
-        if reaction.emoji == "✅":
+        if reaction.emoji == '✅':
             return True
     return False
 
@@ -51,7 +49,7 @@ async def sending_puzzle(client, channels_in, channel_out, sending_hour, sending
         for channel_name, channel_id in random_channels:
             channel = client.get_channel(channel_id)
             async for message in channel.history(oldest_first=True):
-                if not checkIdAlreadySent(message):
+                if not check_id_already_sent(message):
                     destination = client.get_channel(channel_out)
                     # send the puzzle
                     await destination.send("**                          __Today's puzzle !__**")
@@ -66,5 +64,5 @@ async def sending_puzzle(client, channels_in, channel_out, sending_hour, sending
                         Wait time : {wait_time} \
                         | theme : {channel_name} \
                         | source message : {message.id}"
-                    writingForDebug(datetime.now(), debug_message)
+                    log(datetime.now(), debug_message)
                     return

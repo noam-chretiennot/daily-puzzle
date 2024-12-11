@@ -1,11 +1,11 @@
 """
 Configure the bot and start daily sending of puzzles
 """
+from os import getenv
+import json
 from discord import Intents
 from discord.ext import commands
 from dotenv import load_dotenv
-from os import getenv
-import json
 
 from daily_puzzle_utils import sending_puzzle
 
