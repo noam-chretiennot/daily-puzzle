@@ -31,8 +31,9 @@ with open(f'data/{server}_bot_info.json', 'r', encoding='utf-8') as f:
 @client.event
 async def on_ready():
     """Start sending messages"""
-    print("Le bot est prêt")
-    await client.loop.create_task(sending_puzzle(client, channels, to_channel, sending_hour, sending_minute))
+    await client.loop.create_task(
+        sending_puzzle(client, channels, to_channel, sending_hour, sending_minute)
+    )
 
 
 
