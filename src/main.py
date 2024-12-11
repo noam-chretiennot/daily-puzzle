@@ -3,7 +3,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 from os import getenv
 
-from dailyPuzzleUtils import Core
+from src.daily_puzzle_utils import Core
 
 #Bot permissions
 default_intents = Intents.default()
