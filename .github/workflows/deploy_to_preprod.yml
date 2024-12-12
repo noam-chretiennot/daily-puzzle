@@ -22,12 +22,12 @@ jobs:
 
     - name: Deploy to server
       run: |
-        ssh ${{ secrets.PREPROD_SSH_USER }}@${{ secrets.PREPROD_SSH_HOST }} -p ${{ secrets.PREPROD_SSH_PORT }} << 'EOF'
-          cd  ${{ secrets.PREPROD_DIR }}
-          git pull origin main
-          docker-compose down
+        ssh -o StrictHostKeyChecking=no ${{ secrets.PREPROD_SSH_USER }}@${{ secrets.PREPROD_SSH_HOST }} -p ${{ secrets.PREPROD_SSH_PORT }} << EOF
           export TOKEN=${{ secrets.PREPROD_TOKEN }}
           export SERVER=${{ secrets.PREPROD_SERVER }}
+          cd ${{ secrets.PREPROD_DIR }}
+          git pull origin main
+          docker-compose down
           docker-compose up -d --build
         EOF
     
