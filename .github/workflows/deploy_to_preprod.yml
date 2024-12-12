@@ -19,7 +19,7 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
 
-        - name: Deploy to server
+    - name: Deploy to server
       run: |
         ssh ${{ secrets.PREPROD_SSH_USER }}@${{ secrets.PREPROD_SSH_HOST }} -p ${{ secrets.PREPROD_SSH_PORT }} << 'EOF'
           cd  ${{ secrets.PREPROD_DIR }}
