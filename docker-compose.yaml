@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: daily_puzzle_${SERVER}
+    environment:
+      - TOKEN=${TOKEN}
+      - SERVER=${SERVER}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
